@@ -31,6 +31,7 @@ int main()
     int length1 = inputstring.length();
     int length2 = inputsubstring.length();
 
+
     for (int i = 0; i < length1; i++){
         inputstring[i] = toupper(inputstring[i]);
     }
@@ -43,12 +44,15 @@ int main()
 
     int location = inputstring.find(inputsubstring);
 
-
-    if (location != string::npos){
+    while (location < length1){
         count++;
         location = inputstring.find(inputsubstring, location + length2);
+        if (location == string::npos){
+            location = length1 + 1;
+        }
     }
-    
+
+  
     cout << "Count equals: " << count << endl; 
 
 	return 0; //or EXIT_SUCCESS
